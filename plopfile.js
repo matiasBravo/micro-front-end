@@ -1,5 +1,4 @@
 const templateFilesJS = 'plop-templates/js/**';
-const templateFilesTS = 'plop-templates/ts/**';
 
 const jsTemplateActions = [
   {
@@ -33,23 +32,9 @@ const jsTemplateActions = [
     template: '{{dashCase name}}',
   },
 ];
-const tsTemplateActions = [
-  {
-    type: 'addMany',
-    destination: 'packages/{{camelCase name}}',
-    base: 'plop-templates/ts',
-    templateFiles: templateFilesTS,
-  },
-  {
-    type: 'modify',
-    path: 'packages/{{camelCase name}}/package.json',
-    pattern: /##__PROJECT_NAME_LOWER_CASE__##/gi,
-    template: '{{dashCase name}}',
-  },
-];
 
 module.exports = plop => {
-  // Declare a new generator called "newApp" for use with our react-redux-boilerplate app
+  // Declare a new generator called "newApp"
   plop.setGenerator('microfrontend', {
     description: 'Scaffold a new React microApp',
 
@@ -77,7 +62,6 @@ module.exports = plop => {
       },
     ],
 
-    actions: answers =>
-      answers.isJSTemplate ? tsTemplateActions : jsTemplateActions,
+    actions: jsTemplateActions,
   });
 };
