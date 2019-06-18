@@ -1,8 +1,8 @@
 const functions = require('firebase-functions');
 const React = require('react');
+const express = require('express');
 const ReactDOMServer = require('react-dom/server');
 const Footer = require('./app/Footer/index').default;
-const express = require('express');
 
 const app = express();
 app.get('**', (req, res) => {

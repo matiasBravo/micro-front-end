@@ -1,8 +1,8 @@
-var path = require('path');
-var PACKAGE = require('./package.json');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var isProd = process.env.NODE_ENV !== 'dev';
-var externals = {};
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const PACKAGE = require('./package.json');
+const isProd = process.env.NODE_ENV !== 'dev';
+let externals = {};
 
 if (isProd) {
   externals = {
@@ -19,7 +19,7 @@ module.exports = {
     filename: `${PACKAGE.name}.app.js`,
     publicPath: isProd ? `/${PACKAGE.name}` : ``,
   },
-  externals: externals,
+  externals,
   module: {
     rules: [
       { test: /\.(js)$/, use: 'babel-loader' },
